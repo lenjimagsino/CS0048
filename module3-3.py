@@ -1,7 +1,6 @@
-#To-Do List
+tasks = []
 
-def todo_list():
-    tasks = []
+def menu():
     while True:
         print("\nTo-Do List Menu:")
         print("1. Add Task")
@@ -11,28 +10,37 @@ def todo_list():
 
         choice = input("Enter your choice (1-4): ")
 
-        if choice == '4':
-            print("Exiting to-do list. Goodbye!")
-            break
-        elif choice == '1':
-            task = input("Enter the task to add: ")
-            tasks.append(task)
-            print("Task added.")
+        if choice == '1':
+            add_task()
         elif choice == '2':
-            task = input("Enter the task to remove: ")
-            if task in tasks:
-                tasks.remove(task)
-                print("Task removed.")
-            else:
-                print("Task not found.")
+            remove_task()
         elif choice == '3':
-            print("Current Tasks:")
-            if tasks:
-                for i, t in enumerate(tasks, 1):
-                    print(f"{i}. {t}")
-            else:
-                print("No tasks added.")
+            view_tasks()
+        elif choice == '4':
+            print("Exiting to-do list.")
+            break
         else:
-            print("Invalid choice. Please select from 1 to 4.")
-        
-todo_list()
+            print("Invalid choice.")
+
+def add_task():
+    task = input("Enter the task to add: ")
+    tasks.append(task)
+    print("Task added.")
+
+def remove_task():
+    task = input("Enter the task to remove: ")
+    if task in tasks:
+        tasks.remove(task)
+        print("Task removed.")
+    else:
+        print("Task not found.")
+
+def view_tasks():
+    if tasks:
+        print("Your Tasks:")
+        for i, t in enumerate(tasks, 1):
+            print(f"{i}. {t}")
+    else:
+        print("No tasks yet.")
+
+menu()
