@@ -37,6 +37,5 @@ def simple_calculator():
                 print("Invalid operation choice.")
         else:
             print("Please enter valid numbers.")
-
-# Call the function
+            
 simple_calculator()
